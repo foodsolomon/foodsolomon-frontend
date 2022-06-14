@@ -1,0 +1,1 @@
+# foodsolomon-frontend
