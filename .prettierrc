@@ -5,8 +5,8 @@
     "tabWidth": 2,
     "useTabs": false,
     "trailingComma": "all",
-    "singleQuote": true,
-    "jsxSingleQuote": true,
+    "singleQuote": false,
+    "jsxSingleQuote": false,
     "jsxBracketSameLine": false,
     "arrowParens": "avoid"
 }
