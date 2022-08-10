@@ -13,9 +13,9 @@ function App() {
       <GlobalStyle />
       <Header />
       <Routes>
-        <Route path='/' element={<Home />} />
-        <Route path='/restaurantList' element={<RestaurantListPage />} />
-        <Route path='/restaurantDetail' element={<RestaurantDetailPage />} />
+        <Route path="/" element={<Home />} />
+        <Route path="/restaurantList" element={<RestaurantListPage />} />
+        <Route path="/restaurantDetail" element={<RestaurantDetailPage />} />
       </Routes>
       <Footer />
     </BrowserRouter>

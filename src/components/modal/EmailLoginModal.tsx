@@ -137,12 +137,12 @@ function EmailLoginModal({ close, setModalIndex }: ChildProps) {
         </ModalTitle>
         <ModalEmailBox>
           <h4>이메일</h4>
-          <InputDefault placeholder='이메일을 적어주세요' />
+          <InputDefault placeholder="이메일을 적어주세요" />
         </ModalEmailBox>
         <ModalEmailBox>
           <h4>패스워드</h4>
-          <InputDefault placeholder='패스워드를 적어주세요' />
-          <Link to='/' id='link'>
+          <InputDefault placeholder="패스워드를 적어주세요" />
+          <Link to="/" id="link">
             비밀번호가 기억이 안나세요?
           </Link>
         </ModalEmailBox>
@@ -158,15 +158,15 @@ function EmailLoginModal({ close, setModalIndex }: ChildProps) {
           </GoogleLoginBtn>
         </SocialLoginBox>
         <MaintainLoginBox>
-          <label htmlFor='maintainLoginCheck'>
-            <input type='checkbox' name='' id='maintainLoginCheck' />
+          <label htmlFor="maintainLoginCheck">
+            <input type="checkbox" name="" id="maintainLoginCheck" />
             <span>로그인 유지하기</span>
           </label>
         </MaintainLoginBox>
         <LoginBtn onClick={openAlert} />
         <SignUpBox>
           <p>회원이 아니세요?</p>
-          <Link to='/' onClick={() => setModalIndex(2)}>
+          <Link to="/" onClick={() => setModalIndex(2)}>
             회원가입
           </Link>
         </SignUpBox>

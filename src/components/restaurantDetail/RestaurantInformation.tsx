@@ -316,19 +316,19 @@ function RestaurantInformation() {
             </p>
             <CategoryBox>
               <CategoryItem>
-                <img src='' alt='' />
+                <img src="" alt="" />
                 <h4>아시안 푸드</h4>
               </CategoryItem>
               <CategoryItem>
-                <img src='' alt='' />
+                <img src="" alt="" />
                 <h4>기분 좋은 날</h4>
               </CategoryItem>
               <CategoryItem>
-                <img src='' alt='' />
+                <img src="" alt="" />
                 <h4>날씨 좋은 날</h4>
               </CategoryItem>
               <CategoryItem>
-                <img src='' alt='' />
+                <img src="" alt="" />
                 <h4>점심메뉴 TOP 10</h4>
               </CategoryItem>
             </CategoryBox>
@@ -337,12 +337,12 @@ function RestaurantInformation() {
             <h3>메뉴판</h3>
             <RestaurantMenuWrapper>
               <RestaurantMenu>
-                <img src='' alt='' />
+                <img src="" alt="" />
                 <h4>전체 메뉴판</h4>
                 <p>별명이별건가님이 제공</p>
               </RestaurantMenu>
               <RestaurantMenu>
-                <img src='' alt='' />
+                <img src="" alt="" />
                 <h4>전체 메뉴판</h4>
                 <p>별명이별건가님이 제공</p>
               </RestaurantMenu>
