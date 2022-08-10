@@ -109,21 +109,21 @@ function SignUpEmailCheckModal({ close, setModalIndex }: ChildProps) {
         </ModalTitle>
         <ModalEmailBox>
           <h4>이메일</h4>
-          <InputDefault placeholder='이메일을 적어주세요' />
+          <InputDefault placeholder="이메일을 적어주세요" />
         </ModalEmailBox>
         {toggleContinue === '회원가입' && (
           <>
             <ModalEmailBox>
               <h4>별명</h4>
-              <InputDefault placeholder='앞으로 사용할 별명을 적어주세요' />
+              <InputDefault placeholder="앞으로 사용할 별명을 적어주세요" />
             </ModalEmailBox>
             <ModalEmailBox>
               <h4>비밀번호</h4>
-              <InputDefault placeholder='비밀번호를 적어주세요' />
+              <InputDefault placeholder="비밀번호를 적어주세요" />
             </ModalEmailBox>
             <ModalEmailBox>
               <h4>비밀번호 확인</h4>
-              <InputDefault placeholder='비밀번호를 한 번 더 적어주세요' />
+              <InputDefault placeholder="비밀번호를 한 번 더 적어주세요" />
             </ModalEmailBox>
           </>
         )}

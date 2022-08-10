@@ -75,10 +75,10 @@ function SocialLoginModal({ close, setModalIndex }: ChildProps) {
           </h3>
           <CloseButton onClick={close} />
         </ModalTitle>
-        <SocialLoginBtn sns='카카오' />
-        <SocialLoginBtn sns='네이버' />
-        <SocialLoginBtn sns='구글' />
-        <SocialLoginBtn sns='이메일' onClick={() => setModalIndex(1)} />
+        <SocialLoginBtn sns="카카오" />
+        <SocialLoginBtn sns="네이버" />
+        <SocialLoginBtn sns="구글" />
+        <SocialLoginBtn sns="이메일" onClick={() => setModalIndex(1)} />
       </SocialLoginModalWrapper>
     </LoginContainer>
   );
