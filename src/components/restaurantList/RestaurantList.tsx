@@ -1,26 +1,55 @@
 import React from 'react';
 import styled from 'styled-components';
 import RestaurantCard from './RestaurantCard';
+import SearchFilterBox from './SearchFilterBox';
+import Pagination from './Pagination';
 
 const ListContainer = styled.div`
-  width: 1300px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
+  width: 1140px;
+  height: 1888px;
+`;
+
+const GridContainer = styled.div`
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  row-gap: 30px;
+  column-gap: 30px;
+  margin-top: 30px;
 `;
 
 function RestaurantList() {
   return (
     <ListContainer>
-      <RestaurantCard />
-      <RestaurantCard />
-      <RestaurantCard />
-      <RestaurantCard />
-      <RestaurantCard />
-      <RestaurantCard />
-      <RestaurantCard />
-      <RestaurantCard />
+      <SearchFilterBox />
+      <GridContainer>
+        <RestaurantCard />
+        <RestaurantCard />
+        <RestaurantCard />
+        <RestaurantCard />
+        <RestaurantCard />
+        <RestaurantCard />
+        <RestaurantCard />
+        <RestaurantCard />
+        <RestaurantCard />
+        <RestaurantCard />
+        <RestaurantCard />
+        <RestaurantCard />
+        <RestaurantCard />
+        <RestaurantCard />
+        <RestaurantCard />
+        <RestaurantCard />
+        <RestaurantCard />
+        <RestaurantCard />
+        <RestaurantCard />
+        <RestaurantCard />
+        <RestaurantCard />
+        <RestaurantCard />
+        <RestaurantCard />
+        <RestaurantCard />
+        <RestaurantCard />
+      </GridContainer>
+      <Pagination />
     </ListContainer>
   );
 }

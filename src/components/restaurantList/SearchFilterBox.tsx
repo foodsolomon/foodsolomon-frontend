@@ -3,9 +3,10 @@ import styled from 'styled-components';
 import SearchFilter from './SearchFilter';
 
 const SearchFilterContainer = styled.div`
-  width: 1300px;
+  width: 1140px;
   display: flex;
-  border: 1px solid grey;
+  justify-content: flex-start;
+  margin-top: 80px;
 `;
 
 function SearchFilterBox() {

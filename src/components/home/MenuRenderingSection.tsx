@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import styled from 'styled-components';
 import { FiArrowLeft } from 'react-icons/fi';
 
@@ -66,12 +66,42 @@ const DinnerBestMenuContainer = styled.article`
   justify-content: space-between;
 `;
 
-const MenuText = styled.div`
+interface MenuTextProps {
+  imageIndex: number;
+}
+
+const MenuText = styled.div<MenuTextProps>`
   width: 200px;
   height: 230px;
-  background: #f1d3d5;
+  background: ${(props) => {
+    if (props.imageIndex === 1) {
+      return '#C3E1E9';
+    }
+    if (props.imageIndex === 2) {
+      return '#F0D256';
+    }
+    return '#f1d3d5';
+  }};
   border-radius: 7px;
-  order: 2;
+  order: ${(props) => {
+    if (props.imageIndex === 1) {
+      return 4;
+    }
+    if (props.imageIndex === 2) {
+      return 6;
+    }
+    return 2;
+  }};
+  transition: all 0.3s linear;
+  color: ${(props) => {
+    if (props.imageIndex === 1) {
+      return '#08A159';
+    }
+    if (props.imageIndex === 2) {
+      return '#292B32';
+    }
+    return '#F35C1B';
+  }};
 `;
 
 interface MenuImageProps {
@@ -83,38 +113,25 @@ const MenuImage = styled.div<MenuImageProps>`
   height: 230px;
   background: orange;
   border-radius: 7px;
+  transition: all 0.3s linear;
   &:nth-child(1) {
     order: 1;
+    transition: all 0.3s linear;
   }
+
   &:nth-child(2) {
     order: 3;
-    &:hover {
-      order: 2;
-      ${MenuText} {
-        order: 3;
-        background: green;
-      }
-    }
+    transition: all 0.3s linear;
   }
+
   &:nth-child(3) {
-    order: 4;
-    &:hover {
-      order: 3;
-      background: red;
-      ${MenuText} {
-        order: 4;
-        background: purple;
-      }
-    }
+    order: 5;
+    transition: all 0.3s linear;
   }
 `;
 
-interface TextWrapperProps {
-  imageIndex: number;
-}
-
-const TextWrapper = styled.div<TextWrapperProps>`
-  width: 113px;
+const TextWrapper = styled.div`
+  width: 140px;
   height: 33px;
   margin-top: 30px;
   margin-left: 30px;
@@ -123,14 +140,12 @@ const TextWrapper = styled.div<TextWrapperProps>`
     font-size: 22px;
     line-height: 150%;
     letter-spacing: -0.02em;
-    color: #f35c1b;
   }
   p {
     font-weight: 500;
     font-size: 15px;
     line-height: 150%;
     letter-spacing: -0.02em;
-    color: #f35c1b;
     margin-top: 10px;
   }
 `;
@@ -140,7 +155,6 @@ const LeftArrowIcon = styled(FiArrowLeft)`
   font-weight: 600;
   font-size: 22px;
   line-height: 150%;
-  color: #f35c1b;
 `;
 
 function MenuRenderingSection() {
@@ -151,24 +165,14 @@ function MenuRenderingSection() {
     { ranking: 3, title: '햄버거', content: '간단하게 먹고싶다면' },
   ];
 
-  useEffect(() => {
-    console.log(imageIndex);
-  }, [imageIndex]);
+  const changeImageIndex = useCallback(
+    (i: number) => {
+      setImageIndex(i);
+      console.log(imageIndex);
+    },
+    [imageIndex],
+  );
 
-  // const changeImageIndexZero = () => {
-  //   setImageIndex(0);
-  //   console.log(imageIndex);
-  // };
-
-  // const changeImageIndexOne = () => {
-  //   setImageIndex(1);
-  //   console.log(imageIndex);
-  // };
-
-  // const changeImageIndexTwo = () => {
-  //   setImageIndex(2);
-  //   console.log(imageIndex);
-  // };
   return (
     <MenuRenderingSectionContainer>
       <LunchBestMenuContainer>
@@ -184,18 +188,22 @@ function MenuRenderingSection() {
           {foodData.map(({ ranking }, i) => (
             <MenuImage
               key={ranking}
-              onMouseOver={() => {
-                setImageIndex(i);
-              }}
+              // imageIndex={imageIndex}
+              onMouseEnter={() => changeImageIndex(i)}
             />
           ))}
-          <MenuText>
-            <TextWrapper imageIndex={imageIndex}>
-              <h3>1위. 장칼국수</h3>
+          <MenuText imageIndex={imageIndex}>
+            <TextWrapper>
+              <h3>
+                {imageIndex + 1}
+                위.
+                {foodData[imageIndex].title}
+              </h3>
               <p>
-                이열치열 매콤하게
+                {foodData[imageIndex].content}
                 <br />
-                장칼수는 어때요?
+                {foodData[imageIndex].title}
+                &nbsp;어때요?
               </p>
               <LeftArrowIcon />
             </TextWrapper>
@@ -213,7 +221,7 @@ function MenuRenderingSection() {
         </MenuTextWrapper>
         <MenuImagesWrapper>
           {/* <MenuImage /> */}
-          <MenuText>
+          <MenuText imageIndex={imageIndex}>
             {/* <TextWrapper>
               <h3>1위. 치킨</h3>
               <p>

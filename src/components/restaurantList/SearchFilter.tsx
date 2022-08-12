@@ -4,42 +4,46 @@ import { IoIosArrowDown } from 'react-icons/io';
 import useOutsideClick from '../../hooks/useOutsideClick';
 
 const SearchFilterContainer = styled.div`
-  width: 150px;
-  height: 100px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  width: fit-content;
+  height: 42px;
+  margin-right: 15px;
 `;
 
 const DropdownMenu = styled.div`
-  width: 110px;
-  height: 40px;
   display: flex;
-  justify-content: space-evenly;
   align-items: center;
-  background: lightgrey;
-  border-radius: 20px;
   cursor: pointer;
+  width: fit-content;
+  height: 42px;
+  background: #f9f8f4;
+  border: 2px solid #cfc7ba;
+  border-radius: 5px;
+  padding: 12px 15px;
+`;
+
+const ArrowDownIcon = styled(IoIosArrowDown)`
+  margin-left: 3px;
 `;
 
 const DropdownOption = styled.div<DropdownOptionProps>`
-  width: 110px;
+  width: fit-content;
   height: 120px;
   position: absolute;
   top: 45px;
-  border: 1px solid grey;
-  border-radius: 20px;
-  background: white;
+  background: #f9f8f4;
+  border: 2px solid #cfc7ba;
+  border-radius: 5px;
 `;
 
 const DropdownOptions = styled.div`
-  width: 110px;
+  width: fit-content;
   height: 40px;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
   cursor: pointer;
   z-index: 100;
+  padding: 12px 24px;
 `;
 
 const DropdownBox = styled.div`
@@ -77,7 +81,7 @@ function SearchFilter() {
       <DropdownBox>
         <DropdownMenu onClick={handleToggle}>
           {dropdownText}
-          <IoIosArrowDown />
+          <ArrowDownIcon />
         </DropdownMenu>
         {toggle && (
           <DropdownOption ref={outsideRef}>

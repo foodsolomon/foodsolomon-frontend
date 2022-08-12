@@ -22,7 +22,7 @@ const WelcomeArticle = styled.article`
 `;
 
 const WelcomeText = styled.div`
-  width: 573px;
+  width: 579px;
   height: 184px;
   /* border: 1px solid blue; */
   display: flex;
@@ -31,32 +31,42 @@ const WelcomeText = styled.div`
   h1 {
     font-weight: 600;
     font-size: 48px;
-    line-height: 58px;
+    line-height: 70px;
     letter-spacing: -0.02em;
     color: #292b32;
-    span:first-child {
+    height: 64px;
+    /* border: 1px solid red; */
+    span {
       display: inline-block;
       width: 188px;
       height: 64px;
       background: #f1d3d5;
       color: #f35c1b;
       border-radius: 10px;
-      /* display: flex; */
       text-align: center;
+      margin: 0 5px;
     }
-    span:last-child {
+  }
+  h2 {
+    font-weight: 600;
+    font-size: 48px;
+    line-height: 70px;
+    letter-spacing: -0.02em;
+    color: #292b32;
+    height: 64px;
+    /* border: 1px solid red; */
+    span {
       display: inline-block;
       width: 188px;
       height: 64px;
       background: #f35c1b;
       color: #f0d256;
       border-radius: 10px;
-      /* display: flex; */
       text-align: center;
-      margin-top: 15px;
+      margin: 0 5px 0 0;
     }
   }
-  h2 {
+  h3 {
     font-weight: 500;
     font-size: 22px;
     line-height: 26px;
@@ -136,11 +146,13 @@ function CustomMenuSection() {
             오늘도
             <span>메뉴고민</span>
             하는 당신에게
-            <span>찰떡메뉴</span>를 찾아드려요
           </h1>
           <h2>
-            기분, 취향, 날씨를 기반으로 메뉴와 마포구의 식당을 추천드려요.
+            <span>찰떡메뉴</span>를 찾아드려요
           </h2>
+          <h3>
+            기분, 취향, 날씨를 기반으로 메뉴와 마포구의 식당을 추천드려요.
+          </h3>
         </WelcomeText>
         <SearchMoreButton>
           더 알아보기
