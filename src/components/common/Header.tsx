@@ -1,37 +1,69 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import LoginButton from '../../elements/LoginButton';
+import { FiSearch } from 'react-icons/fi';
+import foodSolomonLogo from '../../images/foodSolomonLogo.png';
 import ModalContainer from '../modal/ModalContainer';
 import ModalPortals from '../modal/ModalPortals';
 
-const MainHeader = styled.div`
+const MainHeader = styled.header`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  width: 100%;
+  height: 150px;
+  background: #f2efe5;
+  z-index: 100;
+`;
+
+const HeaderTop = styled.div`
+  width: 100%;
+  height: 100px;
+  border-bottom: 1px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+const TopWrapper = styled.div`
+  width: 1140px;
+  height: 37px;
+  /* border: 1px solid red; */
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 100%;
-  height: 100px;
-  background: #d9d9d9;
-  padding-left: 15px;
-  padding-right: 15px;
-  position: fixed;
 `;
 
-const MainHeaderContainer = styled.div`
-  width: 300px;
+const HeaderLogo = styled.img.attrs({
+  src: `${foodSolomonLogo}`,
+  alt: '로고',
+})``;
+
+const HeaderSearchBar = styled(FiSearch)`
+  width: 27.28px;
+  height: 27.28px;
+`;
+
+const HeaderBottom = styled.nav`
+  width: 100%;
+  height: 50px;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
   align-items: center;
 `;
 
-const MainLogo = styled.img`
-  background: grey;
-  width: 50px;
-  height: 50px;
+const MenuList = styled.ul`
+  width: 332px;
+  height: 21px;
+  /* border: 1px solid red; */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 `;
 
-const SearchBar = styled.input`
-  width: 100px;
-  height: 20px;
+const MenuItem = styled.li`
+  cursor: pointer;
 `;
 
 function Header() {
@@ -49,16 +81,24 @@ function Header() {
 
   return (
     <MainHeader>
-      <MainLogo />
-      <MainHeaderContainer>
-        <SearchBar />
-        <LoginButton onClick={openModal} />
-        {loginModal && (
-          <ModalPortals>
-            <ModalContainer close={closeModal} />
-          </ModalPortals>
-        )}
-      </MainHeaderContainer>
+      <HeaderTop>
+        <TopWrapper>
+          <HeaderLogo />
+          <HeaderSearchBar />
+        </TopWrapper>
+      </HeaderTop>
+      <HeaderBottom>
+        <MenuList>
+          <MenuItem>HOME</MenuItem>
+          <MenuItem>ABOUT</MenuItem>
+          <MenuItem onClick={openModal}>LOGIN</MenuItem>
+        </MenuList>
+      </HeaderBottom>
+      {loginModal && (
+        <ModalPortals>
+          <ModalContainer close={closeModal} />
+        </ModalPortals>
+      )}
     </MainHeader>
   );
 }
