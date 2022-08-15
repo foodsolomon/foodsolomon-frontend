@@ -3,14 +3,23 @@
     "browser": true,
     "es6": true
   },
-    "parser": "@typescript-eslint/parser",
-    "plugins": ["@typescript-eslint", "prettier"],
-    "extends": [
-      "plugin:@typescript-eslint/recommended",
-      "airbnb",
-      "airbnb/hooks",
-      "airbnb-typescript"],
-    "parserOptions": {"project": "./tsconfig.json"},
-    "rules": {"react/jsx-props-no-spreading": "off"}
-  }
-  
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:@typescript-eslint/recommended",
+    "airbnb/hooks",
+    "airbnb-typescript",
+    "plugin:import/recommended",
+    "prettier"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": "latest",
+    "sourceType": "module",
+    "project": "./tsconfig.json"
+  },
+  "rules": { "react/jsx-props-no-spreading": "off" }
+}
