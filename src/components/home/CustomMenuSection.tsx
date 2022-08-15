@@ -1,6 +1,10 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import { BsArrowRight } from 'react-icons/bs';
+import moodIllustration from '../../images/moodIllustration.svg';
+import tasteIllustration from '../../images/tasteIllustration.svg';
+import weatherIllustration from '../../images/weatherIllustration.svg';
+import { getTest } from '../../api/api';
 
 const CustomMenuSectionContainer = styled.section`
   width: 100%;
@@ -107,7 +111,7 @@ const CustomizedMenuWrapper = styled.div`
 
 const MenuBox = styled.div`
   width: 350px;
-  height: 359px;
+  height: 363px;
   /* border: 1px solid red; */
   display: flex;
   flex-direction: column;
@@ -123,10 +127,25 @@ const MenuImageBox = styled.div`
   align-items: center;
 `;
 
-const MenuImage = styled.div`
-  width: 219px;
-  height: 210px;
-  background: grey;
+const MenuImage = styled.div<{ image: string }>`
+  width: ${(props) => {
+    if (props.image === tasteIllustration) {
+      return '219px';
+    }
+    if (props.image === weatherIllustration) {
+      return '235px';
+    }
+    return '228px';
+  }};
+  height: ${(props) => {
+    if (props.image === tasteIllustration) {
+      return '210px';
+    }
+    return '205px';
+  }};
+  /* border: 1px solid red; */
+  background-image: url(${(props) => props.image});
+  background-size: cover;
 `;
 
 const MenuChooseButton = styled.button`
@@ -138,6 +157,10 @@ const MenuChooseButton = styled.button`
 `;
 
 function CustomMenuSection() {
+  useEffect(() => {
+    getTest.get();
+  }, []);
+
   return (
     <CustomMenuSectionContainer>
       <WelcomeArticle>
@@ -163,7 +186,7 @@ function CustomMenuSection() {
         <CustomizedMenuWrapper>
           <MenuBox>
             <MenuImageBox>
-              <MenuImage> </MenuImage>
+              <MenuImage image={moodIllustration}> </MenuImage>
             </MenuImageBox>
             <MenuChooseButton>
               기분 맞춤 메뉴 고르기
@@ -172,7 +195,7 @@ function CustomMenuSection() {
           </MenuBox>
           <MenuBox>
             <MenuImageBox>
-              <MenuImage> </MenuImage>
+              <MenuImage image={tasteIllustration}> </MenuImage>
             </MenuImageBox>
             <MenuChooseButton style={{ background: '#F2F1E5' }}>
               취향 맞춤 메뉴 고르기
@@ -181,7 +204,7 @@ function CustomMenuSection() {
           </MenuBox>
           <MenuBox>
             <MenuImageBox>
-              <MenuImage> </MenuImage>
+              <MenuImage image={weatherIllustration}> </MenuImage>
             </MenuImageBox>
             <MenuChooseButton style={{ background: '#F2F1E5' }}>
               날씨 맞춤 메뉴 고르기
