@@ -12,12 +12,16 @@ const ListContainer = styled.div`
 `;
 
 const GridContainer = styled.div`
+  width: 1140px;
+  height: 1523px;
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   grid-template-rows: repeat(5, 1fr);
   row-gap: 30px;
   column-gap: 30px;
   margin-top: 30px;
+  /* border: 1px solid blue; */
+  margin-bottom: 80px;
 `;
 
 function RestaurantList() {

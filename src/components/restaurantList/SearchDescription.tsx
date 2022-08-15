@@ -3,10 +3,11 @@ import styled from 'styled-components';
 
 const SearchDescriptionBox = styled.section`
   width: 100%;
-  height: 130px;
+  height: 180px;
   display: flex;
   justify-content: center;
-  align-items: flex-end;
+  align-items: center;
+  /* border: 1px solid blue; */
 `;
 const SearchDescriptionText = styled.p`
   font-weight: 600;
@@ -14,7 +15,8 @@ const SearchDescriptionText = styled.p`
   line-height: 20px;
   letter-spacing: -0.02em;
   color: #413b2d;
-  margin-bottom: 30px;
+  /* margin-bottom: 30px; */
+  /* border: 1px solid blue; */
 `;
 
 function SearchDescription() {

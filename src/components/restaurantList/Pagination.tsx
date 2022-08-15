@@ -1,5 +1,6 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+import { useNavigate } from 'react-router-dom';
 // import {
 //   RiNumber1, RiNumber2, RiNumber3, RiNumber4, RiNumber5,
 // } from 'react-icons/ri';
@@ -18,42 +19,84 @@ const PaginationContainer = styled.div`
 `;
 
 const PaginationWrapper = styled.div`
-  width: 171px;
-  height: 26px;
+  width: 238px;
+  height: 46px;
   margin-top: 30px;
   /* border: 1px solid red; */
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 17px;
-  color: #95866c;
-  & > * {
-    cursor: pointer;
-  }
 `;
 
-const PageNumber = styled.div`
+const PageNumber = styled.div<{ currentPage: boolean }>`
   width: 45px;
   height: 46px;
+  /* border: 1px solid red; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 17px;
+  color: #95866c;
+  ${(props) =>
+    props.currentPage &&
+    css`
+      font-weight: 700;
+      font-size: 22px;
+      color: #f35c1b;
+      background: #f9f8f4;
+    `}
 `;
 
 function Pagination({ currentPage, setCurrentPage }: PaginationProps) {
-  const arr = [];
-  for (let i = 0; i < currentPage; i + 1) {
-    arr.push(i);
-  }
+  const navigate = useNavigate();
+  const moveToTop = () => (document.documentElement.scrollTop = 0);
   return (
     <PaginationContainer>
       <PaginationWrapper>
-        {/* <RiNumber1 onClick={() => setCurrentPage(1)} /> */}
-        {arr.map((pageNumber) => (
-          <PageNumber
-            key={pageNumber}
-            onClick={() => setCurrentPage(pageNumber)}
-          >
-            {pageNumber}
-          </PageNumber>
-        ))}
+        <PageNumber
+          currentPage={currentPage === 1}
+          onClick={() => {
+            setCurrentPage(1);
+            navigate('?page=1');
+            moveToTop();
+          }}
+        >
+          1
+        </PageNumber>
+        <PageNumber
+          currentPage={currentPage === 2}
+          onClick={() => {
+            setCurrentPage(2);
+            navigate('?page=2');
+            moveToTop();
+          }}
+        >
+          2
+        </PageNumber>
+        <PageNumber
+          currentPage={currentPage === 3}
+          onClick={() => {
+            setCurrentPage(3);
+            navigate('?page=3');
+            moveToTop();
+          }}
+        >
+          3
+        </PageNumber>
+        <PageNumber
+          currentPage={currentPage === 4}
+          onClick={() => setCurrentPage(4)}
+        >
+          4
+        </PageNumber>
+        <PageNumber
+          currentPage={currentPage === 5}
+          onClick={() => setCurrentPage(5)}
+        >
+          5
+        </PageNumber>
       </PaginationWrapper>
     </PaginationContainer>
   );
