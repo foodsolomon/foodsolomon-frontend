@@ -6,7 +6,8 @@ const SearchFilterContainer = styled.div`
   width: 1140px;
   display: flex;
   justify-content: flex-start;
-  margin-top: 80px;
+  /* margin-top: 80px; */
+  /* border: 1px solid green; */
 `;
 
 function SearchFilterBox() {
