@@ -84,7 +84,7 @@ function SearchBar() {
     <SearchBox>
       <SearchInput>
         <SearchIcon />
-        <input type="search" />
+        <input type='search' spellCheck='false' />
       </SearchInput>
     </SearchBox>
   );

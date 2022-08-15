@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
+import { useQuery } from '@tanstack/react-query';
 import RestaurantCard from './RestaurantCard';
 import SearchFilterBox from './SearchFilterBox';
 import Pagination from './Pagination';
+import { getPagingLists } from '../../api/api';
 
 const ListContainer = styled.div`
   width: 1140px;
@@ -19,37 +21,27 @@ const GridContainer = styled.div`
 `;
 
 function RestaurantList() {
+  const [currentPage, setCurrentPage] = useState(1);
+  // const { data } = useQuery(['myQuery'], getRestaurantLists.get);
+  const { data } = useQuery(['getLists', currentPage], () =>
+    getPagingLists.getListsByPaging(currentPage),
+  );
   return (
     <ListContainer>
       <SearchFilterBox />
       <GridContainer>
-        <RestaurantCard />
-        <RestaurantCard />
-        <RestaurantCard />
-        <RestaurantCard />
-        <RestaurantCard />
-        <RestaurantCard />
-        <RestaurantCard />
-        <RestaurantCard />
-        <RestaurantCard />
-        <RestaurantCard />
-        <RestaurantCard />
-        <RestaurantCard />
-        <RestaurantCard />
-        <RestaurantCard />
-        <RestaurantCard />
-        <RestaurantCard />
-        <RestaurantCard />
-        <RestaurantCard />
-        <RestaurantCard />
-        <RestaurantCard />
-        <RestaurantCard />
-        <RestaurantCard />
-        <RestaurantCard />
-        <RestaurantCard />
-        <RestaurantCard />
+        {data?.map((card: any) => (
+          <RestaurantCard
+            key={card.id}
+            star={card.star}
+            region={card.region}
+            category={card.category}
+            restaurantName={card.restaurant_name}
+            imageUrl={card.image_url}
+          />
+        ))}
       </GridContainer>
-      <Pagination />
+      <Pagination currentPage={currentPage} setCurrentPage={setCurrentPage} />
     </ListContainer>
   );
 }

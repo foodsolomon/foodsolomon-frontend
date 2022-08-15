@@ -3,16 +3,27 @@ import styled from 'styled-components';
 import { FiBookmark } from 'react-icons/fi';
 import { FaStar } from 'react-icons/fa';
 
+interface RestaurantCardProps {
+  imageUrl: string;
+  star: number;
+  region: string;
+  category: string;
+  restaurantName: string;
+}
+
 const CardContainer = styled.div`
   width: 204px;
   height: 272px;
 `;
 
-const CardImage = styled.div`
+const CardImage = styled.div<{ imageUrl: string }>`
   width: 204px;
   height: 204px;
   border-radius: 10px;
-  background: lightgrey;
+  background-image: url(${(props) => props.imageUrl});
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
 `;
 
 const CardInformation = styled.div`
@@ -61,18 +72,21 @@ const BookmarkIcon = styled(FiBookmark)`
   height: 24px;
 `;
 
-function RestaurantCard() {
+function RestaurantCard(props: RestaurantCardProps) {
+  const { imageUrl, star, region, category, restaurantName } = props;
   return (
     <CardContainer>
-      <CardImage />
+      <CardImage imageUrl={imageUrl} />
       <CardInformation>
         <CardText>
-          <CardTitle>슬로우캘리 연남본점</CardTitle>
+          <CardTitle>{restaurantName}</CardTitle>
           <CardDescription>
             <StarIcon />
             <p>
-              <span>4.3</span>
-              연남, 아시안
+              <span>{star}</span>
+              {region}
+              ,&nbsp;
+              {category}
             </p>
           </CardDescription>
         </CardText>

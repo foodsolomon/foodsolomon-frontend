@@ -49,7 +49,7 @@ const MenuTextWrapper = styled.div`
   }
 `;
 
-const MenuImagesWrapper = styled.div`
+const MenuImagesWrapper = styled.div<{ ref?: any }>`
   width: 1140px;
   height: 230px;
   /* border: 1px solid green; */
@@ -83,7 +83,7 @@ const MenuText = styled.div<MenuTextProps>`
     return '#f1d3d5';
   }};
   border-radius: 7px;
-  order: ${(props) => {
+  /* order: ${(props) => {
     if (props.imageIndex === 1) {
       return 4;
     }
@@ -91,8 +91,18 @@ const MenuText = styled.div<MenuTextProps>`
       return 6;
     }
     return 2;
+  }}; */
+  order: 2;
+  transform: ${(props) => {
+    if (props.imageIndex === 1) {
+      return 'translateX(313px)';
+    }
+    if (props.imageIndex === 2) {
+      return 'translateX(626px)';
+    }
+    return '0';
   }};
-  transition: all 0.3s linear;
+  transition: transform 0.2s linear;
   color: ${(props) => {
     if (props.imageIndex === 1) {
       return '#08A159';
@@ -106,6 +116,7 @@ const MenuText = styled.div<MenuTextProps>`
 
 interface MenuImageProps {
   key: number;
+  imageIndex: number;
 }
 
 const MenuImage = styled.div<MenuImageProps>`
@@ -113,20 +124,35 @@ const MenuImage = styled.div<MenuImageProps>`
   height: 230px;
   background: orange;
   border-radius: 7px;
-  transition: all 0.3s linear;
+  transition: transform 0.2s linear;
   &:nth-child(1) {
     order: 1;
-    transition: all 0.3s linear;
   }
 
   &:nth-child(2) {
     order: 3;
-    transition: all 0.3s linear;
+    transform: ${(props) => {
+      if (props.imageIndex === 1) {
+        return 'translateX(-230px)';
+      }
+      if (props.imageIndex === 2) {
+        return 'translateX(-230px)';
+      }
+      return '0';
+    }};
   }
 
   &:nth-child(3) {
     order: 5;
-    transition: all 0.3s linear;
+    transform: ${(props) => {
+      if (props.imageIndex === 1) {
+        return '0';
+      }
+      if (props.imageIndex === 2) {
+        return 'translateX(-230px)';
+      }
+      return '0';
+    }};
   }
 `;
 
@@ -173,6 +199,23 @@ function MenuRenderingSection() {
     [imageIndex],
   );
 
+  // useEffect(() => {
+  //   const imageIndexAnimation = () => {
+  //     setInterval(() => {
+  //       setImageIndex(imageIndex + 1);
+  //       if (imageIndex === 2) {
+  //         setImageIndex(0);
+  //       }
+  //       console.log(imageIndex);
+  //     }, 2000);
+  //   };
+  //   const cancelIndexAnimation = () => {
+  //     clearInterval();
+  //   };
+  //   imageIndexAnimation();
+  //   return cancelIndexAnimation();
+  // }, [imageIndex]);
+
   return (
     <MenuRenderingSectionContainer>
       <LunchBestMenuContainer>
@@ -188,7 +231,7 @@ function MenuRenderingSection() {
           {foodData.map(({ ranking }, i) => (
             <MenuImage
               key={ranking}
-              // imageIndex={imageIndex}
+              imageIndex={imageIndex}
               onMouseEnter={() => changeImageIndex(i)}
             />
           ))}
