@@ -6,6 +6,7 @@ import Home from './pages/Home';
 import RestaurantListPage from './pages/RestaurantListPage';
 import RestaurantDetailPage from './pages/RestaurantDetailPage';
 import Footer from './components/common/Footer';
+import MoodSelectPage from './pages/MoodSelectPage';
 
 function App() {
   return (
@@ -13,9 +14,10 @@ function App() {
       <GlobalStyle />
       <Header />
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/restaurantList" element={<RestaurantListPage />} />
-        <Route path="/restaurantDetail" element={<RestaurantDetailPage />} />
+        <Route path='/' element={<Home />} />
+        <Route path='/restaurantList' element={<RestaurantListPage />} />
+        <Route path='/restaurantDetail' element={<RestaurantDetailPage />} />
+        <Route path='/moodSelect' element={<MoodSelectPage />} />
       </Routes>
       <Footer />
     </BrowserRouter>
