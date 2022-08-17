@@ -81,7 +81,7 @@ const WorldcupStart = () => {
         <RowBox>
           <NumberBox />
           <StandardText margin={false}>
-            2개의 메뉴 중 더 끌리는 메뉴를 선택해 주세요.
+            2개의 메뉴 중 더 끌리는 메뉴를 선택해 주세요
           </StandardText>
         </RowBox>
         <RowBox>
