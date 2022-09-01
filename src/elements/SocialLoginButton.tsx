@@ -3,10 +3,11 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
 const SocialLoginButtonBox = styled.button`
-  width: 424px;
-  height: 78px;
   border: none;
   font-size: 24px;
+  width: 50px;
+  height: 50px;
+  border-radius: 10px;
 `;
 
 interface SocialLoginButtonProps {

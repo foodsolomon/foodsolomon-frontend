@@ -9,7 +9,7 @@ const RestaurantDetailPageContainer = styled.main`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding-top: 100px;
+  padding-top: 150px;
 `;
 
 function RestaurantDetailPage() {
