@@ -3,30 +3,41 @@ import styled from 'styled-components';
 
 const ImageCard = styled.div`
   background: #a4a4a4;
+  border-radius: 10px;
 `;
 
 const ImageContainer = styled.section`
-  width: 1400px;
-  display: grid;
+  width: 100%;
+  height: 422px;
+  display: flex;
   justify-content: center;
-  gap: 5px;
-  grid-template-columns: 3fr 1fr 1fr;
-  grid-template-rows: 200px 200px;
+  align-items: center;
+  /* border: 1px solid red; */
+`;
+
+const ImageWrapper = styled.div`
+  width: 1140px;
+  height: 362px;
+  /* border: 1px solid blue; */
+  display: grid;
+  gap: 30px;
+  grid-template-columns: 750px 165px 165px;
+  grid-template-rows: 166px 166px;
   ${ImageCard}:first-child {
     grid-row: 1 / 3;
   }
-  margin: 30px 0;
 `;
 
 function RestaurantImageList() {
   return (
     <ImageContainer>
-      <ImageCard />
-      <ImageCard />
-      <ImageCard />
-      <ImageCard />
-      <ImageCard />
-      <ImageCard />
+      <ImageWrapper>
+        <ImageCard />
+        <ImageCard />
+        <ImageCard />
+        <ImageCard />
+        <ImageCard />
+      </ImageWrapper>
     </ImageContainer>
   );
 }

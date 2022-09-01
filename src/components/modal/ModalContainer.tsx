@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import EmailLoginModal from './EmailLoginModal';
 import SignUpCompleteModal from './SignUpCompleteModal';
 import SignUpEmailCheckModal from './SignUpEmailCheckModal';
-import SocialLoginModal from './SocialLoginModal';
+// import SocialLoginModal from './SocialLoginModal';
 
 const Container = styled.div`
   position: absolute;
@@ -24,8 +24,9 @@ const Background = styled.div`
   position: fixed;
   width: 100%;
   height: 100%;
-  background-color: rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(5px);
+  /* background-color: rgba(255, 255, 255, 0.15); */
+  background-color: rgba(2, 2, 2, 0.6);
+  /* opacity: 0.6; */
   animation: modal-bg-show 1s;
   @keyframes modal-bg-show {
     from {
@@ -38,11 +39,12 @@ const Background = styled.div`
 `;
 
 const ModalBlock = styled.div`
-  position: absolute;
-  width: 500px;
+  position: fixed;
+  width: 564px;
   height: fit-content;
-  overflow-x: hidden;
-  padding: 10px;
+  overflow: hidden;
+  border: 1px solid red;
+  /* padding: 10px; */
   animation: modal-show 1s;
   @keyframes modal-show {
     from {
@@ -66,8 +68,9 @@ const Contents = styled.div<ContentsTypes>`
   align-items: center;
   width: fit-content;
   height: fit-content;
-  transform: translateX(${(props) => props.modalIndex * -576}px);
-  transition: all linear 0.2s;
+  transform: translateX(${(props) => props.modalIndex * -640}px);
+  transition: all linear 0.05s;
+  border: 1px solid blue;
 `;
 
 interface ModalFrameProps {
@@ -81,7 +84,7 @@ function ModalContainer({ close }: ModalFrameProps) {
       <Background onClick={close} />
       <ModalBlock>
         <Contents modalIndex={modalIndex}>
-          <SocialLoginModal setModalIndex={setModalIndex} close={close} />
+          {/* <SocialLoginModal setModalIndex={setModalIndex} close={close} /> */}
           <EmailLoginModal setModalIndex={setModalIndex} close={close} />
           <SignUpEmailCheckModal setModalIndex={setModalIndex} close={close} />
           <SignUpCompleteModal close={close} />

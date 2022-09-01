@@ -7,7 +7,7 @@ import RestaurantListPage from './pages/RestaurantListPage';
 import RestaurantDetailPage from './pages/RestaurantDetailPage';
 import Footer from './components/common/Footer';
 import MoodSelectPage from './pages/MoodSelectPage';
-
+import WorldcupStartPage from './pages/WorldcupStartPage';
 function App() {
   return (
     <BrowserRouter>
@@ -18,6 +18,7 @@ function App() {
         <Route path='/restaurantList' element={<RestaurantListPage />} />
         <Route path='/restaurantDetail' element={<RestaurantDetailPage />} />
         <Route path='/moodSelect' element={<MoodSelectPage />} />
+        <Route path='/worldcup' element={<WorldcupStartPage />} />
       </Routes>
       <Footer />
     </BrowserRouter>

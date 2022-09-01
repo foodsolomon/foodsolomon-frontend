@@ -12,6 +12,7 @@ const testApi = axios.create({
   baseURL: 'http://43.200.144.225:8181/',
   headers: {
     'Content-type': 'application/json; charset=UTF-8',
+    'Access-Control-Allow-Origin': '*',
     accept: 'application/json,',
   },
 });
@@ -36,9 +37,15 @@ export const getPagingLists = {
         console.log(err);
       }),
 };
+interface DataType {
+  email: string;
+  password: string;
+}
 
-export const posts = {
-  get: () => api.get('/posts'),
+export const loginUser = async ({ email, password }: DataType) => {
+  const { data } = await api.post('/login', { email, password });
+  console.log(data);
+  return data;
 };
 
 export const getTest = {
