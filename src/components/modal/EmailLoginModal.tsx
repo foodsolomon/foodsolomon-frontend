@@ -7,7 +7,7 @@ import { VscClose } from 'react-icons/vsc';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
-import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { useMutation } from '@tanstack/react-query';
 import { ImEye, ImEyeBlocked } from 'react-icons/im';
 import { loginUser } from '../../api/api';
 
@@ -170,6 +170,7 @@ const LoginButton = styled.button<{ disabled: boolean }>`
   letter-spacing: -0.02em;
   color: #ffffff;
   align-self: center;
+  cursor: ${(props) => (props.disabled ? 'no-drop' : 'pointer')};
 `;
 
 const BottomWrapper = styled.div`
@@ -284,14 +285,12 @@ function EmailLoginModal({ close, setModalIndex }: ChildProps) {
     alert('개발중');
     console.log(isValid);
   };
-  const queryClient = useQueryClient();
   const { mutate, data, error, reset } = useMutation(loginUser, {
     onError: (err: any) => {
       console.log(err.response.data);
     },
     onSuccess: () => {
       console.log('로그인 성공!');
-      console.log(queryClient);
     },
   });
 

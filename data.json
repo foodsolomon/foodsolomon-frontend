@@ -21,6 +21,41 @@
       "email": "tkddnjs5613@nate.com",
       "password": "$2a$10$7/R8C1LJsyLrdLhqoFNlsOzC1nTjNFvxLa.ErvR1glOp0p.BPOxnS",
       "id": 4
+    },
+    {
+      "email": "qwer1234@nate.com",
+      "password": "$2a$10$8LRQze0yPHKXYel.gKuGCeFG1WQUfoK4IwcIn5/Pd3q3014da2Pu6",
+      "id": 5
+    },
+    {
+      "email": "andy609@nate.com",
+      "password": "$2a$10$dCurriT5jbOaYHmbqGvId.AoZrY9aZd.lkmHpnG770Pvctzou6502",
+      "nickname": "프론트개발자",
+      "id": 6
+    },
+    {
+      "email": "user@naver.com",
+      "password": "$2a$10$B73WBvgr5JhR/4QfeAXxQ.wv6CzkatWBLb9A27OvnRo8q30YIBGHG",
+      "nickname": "프론트개발자",
+      "id": 7
+    },
+    {
+      "email": "user2@naver.com",
+      "password": "$2a$10$uHlQ9YmUn9WrPDqg0dsYR.GGrchoUNrdlN0csoZ.1//9kWiHWxUhC",
+      "nickname": "방가방가",
+      "id": 8
+    },
+    {
+      "email": "user3@naver.com",
+      "password": "$2a$10$qkgJ81euQYPQxNebGBblFOMGhkuDlokAzfBFH/Q1ALZ06gRVH8.c2",
+      "nickname": "방가방가",
+      "id": 9
+    },
+    {
+      "email": "user4@naver.com",
+      "password": "$2a$10$FTQSchUVpJ4nhlgyhGoDC.6W3J9APsHWirKwB/fO/F6WOmVCYoZ4O",
+      "nickname": "유저4",
+      "id": 10
     }
   ],
   "restaurant": [

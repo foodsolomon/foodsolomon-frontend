@@ -5,6 +5,8 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { ImEye, ImEyeBlocked } from 'react-icons/im';
+import { useMutation } from '@tanstack/react-query';
+import { signUpUser } from '../../api/api';
 
 interface ContainerProps {
   toggleContinue: string;
@@ -144,6 +146,7 @@ const ContinueButton = styled.button<{ disabled: boolean }>`
   font-size: 25px;
   border: none;
   align-self: center;
+  cursor: ${(props) => (props.disabled ? 'no-drop' : 'pointer')};
 `;
 
 const BottomBox = styled.div`
@@ -247,12 +250,29 @@ function SignUpEmailCheckModal({ close, setModalIndex }: ChildProps) {
     if (toggleContinue === '회원가입') setModalIndex(2);
   };
 
-  const onSubmit = () => {
+  const { mutate } = useMutation(signUpUser, {
+    onError: (err: any) => {
+      console.log(err.response.data);
+    },
+    onSuccess: (userData: any) => {
+      console.log('회원가입 성공!');
+      console.log(userData);
+      goNextPage();
+    },
+  });
+
+  const onSubmit = (dataInput: any) => {
     console.log('submit');
+    mutate({
+      email: dataInput.email,
+      password: dataInput.password,
+      nickname: dataInput.nickname,
+    });
+    console.log(dataInput);
   };
 
-  const onError = (error: any) => {
-    console.log(error);
+  const onError = (err: any) => {
+    console.log(err);
   };
 
   const emailIsValid = (emailError: any) => {
@@ -357,7 +377,6 @@ function SignUpEmailCheckModal({ close, setModalIndex }: ChildProps) {
             <ContinueButton
               onClick={() => {
                 handleToggleContinue();
-                goNextPage();
               }}
               disabled={
                 toggleContinue === '계속하기'
