@@ -4,6 +4,7 @@ import { FiSearch } from 'react-icons/fi';
 import foodSolomonLogo from '../../images/foodSolomonLogo.png';
 import ModalContainer from '../modal/ModalContainer';
 import ModalPortals from '../modal/ModalPortals';
+import { useSelector } from 'react-redux';
 
 const MainHeader = styled.header`
   display: flex;
@@ -68,6 +69,7 @@ const MenuItem = styled.li`
 
 function Header() {
   const [loginModal, setLoginModal] = useState(false);
+  const token = useSelector((state: any) => state.user.token);
 
   const openModal = () => {
     setLoginModal(true);
@@ -91,7 +93,7 @@ function Header() {
         <MenuList>
           <MenuItem>HOME</MenuItem>
           <MenuItem>ABOUT</MenuItem>
-          <MenuItem onClick={openModal}>LOGIN</MenuItem>
+          <MenuItem onClick={openModal}>{token ? 'LOGOUT' : 'LOGIN'}</MenuItem>
         </MenuList>
       </HeaderBottom>
       {loginModal && (
