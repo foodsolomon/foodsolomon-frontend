@@ -7,6 +7,7 @@ import RestaurantListPage from './pages/RestaurantListPage';
 import RestaurantDetailPage from './pages/RestaurantDetailPage';
 import Footer from './components/common/Footer';
 import MoodSelectPage from './pages/MoodSelectPage';
+import WorldcupStartPage from './pages/WorldcupStartPage';
 import { useDispatch, useSelector } from 'react-redux';
 import { useCookies } from 'react-cookie';
 import { setToken } from './redux/slices/usersSlice';
@@ -34,6 +35,7 @@ function App() {
         <Route path='/restaurantList' element={<RestaurantListPage />} />
         <Route path='/restaurantDetail' element={<RestaurantDetailPage />} />
         <Route path='/moodSelect' element={<MoodSelectPage />} />
+        <Route path='/worldcup' element={<WorldcupStartPage />} />
       </Routes>
       <Footer />
     </BrowserRouter>
