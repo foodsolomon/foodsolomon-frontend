@@ -7,9 +7,12 @@ import { VscClose } from 'react-icons/vsc';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
-import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { useMutation } from '@tanstack/react-query';
+import { useCookies } from 'react-cookie';
 import { ImEye, ImEyeBlocked } from 'react-icons/im';
 import { loginUser } from '../../api/api';
+import { useDispatch } from 'react-redux';
+import { loginSuccess } from '../../redux/slices/usersSlice';
 
 const MainContainer = styled.div`
   width: 564px;
@@ -170,6 +173,7 @@ const LoginButton = styled.button<{ disabled: boolean }>`
   letter-spacing: -0.02em;
   color: #ffffff;
   align-self: center;
+  cursor: ${(props) => (props.disabled ? 'no-drop' : 'pointer')};
 `;
 
 const BottomWrapper = styled.div`
@@ -275,23 +279,22 @@ function EmailLoginModal({ close, setModalIndex }: ChildProps) {
 
   const [showPassword, setShowPassword] = useState(false);
   const [userData, setUserData] = useState({ email: '', password: '' });
+  const dispatch = useDispatch();
+  const [, setCookies] = useCookies(['jwt']);
 
   const ToggleShowPassword = () => {
     setShowPassword((prev: boolean) => !prev);
   };
 
-  const openAlert = () => {
-    alert('개발중');
-    console.log(isValid);
-  };
-  const queryClient = useQueryClient();
   const { mutate, data, error, reset } = useMutation(loginUser, {
     onError: (err: any) => {
       console.log(err.response.data);
     },
-    onSuccess: () => {
+    onSuccess: (userInfo: any) => {
       console.log('로그인 성공!');
-      console.log(queryClient);
+      dispatch(loginSuccess(userInfo));
+      setCookies('jwt', userInfo.accessToken);
+      close();
     },
   });
 
@@ -358,9 +361,7 @@ function EmailLoginModal({ close, setModalIndex }: ChildProps) {
             <Link to='/'>
               <p>비밀번호가 기억이 안나세요?</p>
             </Link>
-            <LoginButton onClick={openAlert} disabled={!isValid}>
-              로그인하기
-            </LoginButton>
+            <LoginButton disabled={!isValid}>로그인하기</LoginButton>
           </InputWrapper>
           <BottomWrapper>
             <MaintainLoginBox>

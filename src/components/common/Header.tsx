@@ -4,6 +4,9 @@ import { FiSearch } from 'react-icons/fi';
 import foodSolomonLogo from '../../images/foodSolomonLogo.png';
 import ModalContainer from '../modal/ModalContainer';
 import ModalPortals from '../modal/ModalPortals';
+import { useSelector, useDispatch } from 'react-redux';
+import { useCookies } from 'react-cookie';
+import { setToken } from '../../redux/slices/usersSlice';
 
 const MainHeader = styled.header`
   display: flex;
@@ -68,10 +71,18 @@ const MenuItem = styled.li`
 
 function Header() {
   const [loginModal, setLoginModal] = useState(false);
+  const token = useSelector((state: any) => state.user.token);
+  const [, , removeCookies] = useCookies(['jwt']);
+  const dispatch = useDispatch();
 
   const openModal = () => {
-    setLoginModal(true);
-    document.body.style.overflow = 'hidden';
+    if (token) {
+      removeCookies('jwt');
+      dispatch(setToken(null));
+    } else {
+      setLoginModal(true);
+      document.body.style.overflow = 'hidden';
+    }
   };
 
   const closeModal = () => {
@@ -91,7 +102,7 @@ function Header() {
         <MenuList>
           <MenuItem>HOME</MenuItem>
           <MenuItem>ABOUT</MenuItem>
-          <MenuItem onClick={openModal}>LOGIN</MenuItem>
+          <MenuItem onClick={openModal}>{token ? 'LOGOUT' : 'LOGIN'}</MenuItem>
         </MenuList>
       </HeaderBottom>
       {loginModal && (

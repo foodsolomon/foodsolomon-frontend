@@ -37,13 +37,25 @@ export const getPagingLists = {
         console.log(err);
       }),
 };
-interface DataType {
+interface LoginType {
   email: string;
   password: string;
 }
 
-export const loginUser = async ({ email, password }: DataType) => {
+export const loginUser = async ({ email, password }: LoginType) => {
   const { data } = await api.post('/login', { email, password });
+  console.log(data);
+  return data;
+};
+
+interface SignUpType {
+  email: string;
+  password: string;
+  nickname: string;
+}
+
+export const signUpUser = async ({ email, password, nickname }: SignUpType) => {
+  const { data } = await api.post('/register', { email, password, nickname });
   console.log(data);
   return data;
 };
