@@ -12,8 +12,7 @@
 
 <br>
 
-<img src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/9594351d-846c-4635-9bde-7bd08b076dcc/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20230312%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20230312T174127Z&X-Amz-Expires=86400&X-Amz-Signature=f92707a6fbd3d9bc362f074b1951f2796f578f07bda867d9ba64caa483752a08&X-Amz-SignedHeaders=host&response-content-disposition=filename%3D%22Untitled.png%22&x-id=GetObject" alt="푸드솔로몬홈화면" />
-
+<img src="https://user-images.githubusercontent.com/68457677/225563141-eb3be584-39ec-4c9e-b947-32524a49cb71.png" alt="푸드솔로몬홈화면" />
 
 <br>
 
